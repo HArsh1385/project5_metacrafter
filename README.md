@@ -1,64 +1,75 @@
-# GoldLand Token (GLD)
+# BitLand Token (BITL)
 
 ## Overview
-GoldLand Token (GLD) is an ERC20 token deployed on the Ethereum blockchain. It utilizes the OpenZeppelin library for ERC20 implementation and includes additional functionalities for minting and burning tokens.
+
+BitLand Token (BITL) is an ERC20 token designed for deployment on the Ethereum blockchain. It leverages the OpenZeppelin library to ensure robust ERC20 compliance while adding functionalities for minting and burning tokens.
 
 ## Features
-- **Name:** GoldLand Token
-- **Symbol:** GLD
-- **Decimals:** 18
-- **Total Supply:** Customizable at deployment
+
+- **Name**: BitLand Token
+- **Symbol**: BITL
+- **Decimals**: 18
+- **Total Supply**: Customizable during deployment
 
 ## Contracts
 
-### GoldLandToken.sol
-GoldLandToken.sol is the main contract that defines the GoldLand Token. It extends ERC20 and includes additional functionalities such as token minting and burning.
+### BitLandToken.sol
 
-### Functions
-- **constructor(uint256 initialSupply):** Initializes the token with an initial supply and assigns the entire supply to the deployer's address.
-- **mint(address recipient, uint256 amount):** Allows the owner to mint new tokens and assign them to a specified address.
-- **burn(uint256 amount):** Allows any token holder to burn a specific amount of their own tokens.
-- **transfer(address recipient, uint256 amount):** Overrides the transfer function from ERC20 to include additional validations.
+This contract implements the BitLand Token. It extends the standard ERC20 contract and includes additional functionalities for token minting and burning.
 
-### Dependencies
-This project relies on OpenZeppelin's contracts for ERC20 and Ownable functionalities:
-- **ERC20:** OpenZeppelin ERC20.sol
-- **Ownable:** OpenZeppelin Ownable.sol
+## Functions
+
+- **constructor(uint256 initialBalance)**: Sets up the token with an initial supply, assigning the total amount to the deployer's address.
+
+- **mint(address to, uint256 amount)**: Allows the contract owner to mint new tokens and allocate them to a specified address.
+
+- **burn(uint256 amount)**: Enables any token holder to burn a specified amount of their tokens.
+
+- **transfer(address recipient, uint256 amount)**: Overrides the default ERC20 transfer function to include extra validation checks.
+
+## Dependencies
+
+The project depends on OpenZeppelin's contracts for ERC20 and Ownable functionalities:
+
+- **ERC20**: [OpenZeppelin ERC20.sol](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.5/contracts/token/ERC20/ERC20.sol)
+- **Ownable**: [OpenZeppelin Ownable.sol](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.5/contracts/access/Ownable.sol)
 
 ## Getting Started
-To deploy your own instance of GoldLand Token, follow these steps:
 
-1. **Open Remix IDE** and create a new `.sol` file.
-2. **Set the compiler version** to `0.8.17+` and compile the code.
-3. **Change the environment** to `Remix VM (London)` and set the initial supply as `1000000000000000000000000` tokens (which is 1 million tokens with 18 decimals).
-4. **Deploy the contract**.
+### Deployment
 
-## Usage
-### Deploying the Token
-Deploy the `GoldLandToken` contract, specifying the initial supply in the constructor.
+1. Open Remix IDE and create a new `.sol` file.
+2. Set the compiler version to `0.8.17+` and compile the contract code.
+3. Switch the environment to Remix VM (London).
+4. Provide an initial supply (e.g., `1000000000000000000000000` tokens, which equals 1 million tokens with 18 decimals) and deploy the contract.
 
 ### Interacting with the Token
-Use any Ethereum wallet or interface (such as MetaMask or Remix) to:
-- **View your balance** of GLD tokens.
-- **Transfer tokens** to other addresses.
-- **Mint new tokens** if you are the owner.
-- **Burn your own tokens**.
 
-### Example Interactions
-After deploying the contract:
-1. **Minting Tokens:**
-   ```solidity
-   GoldLandToken.mint("0xRecipientAddress", 1000);
-   ```
-2. **Transferring Tokens:**
-   ```solidity
-   GoldLandToken.transfer("0xRecipientAddress", 1000);
-   ```
-3. **Burning Tokens:**
-   ```solidity
-   GoldLandToken.burn(500);
-   ```
-4. **Checking Balance:**
-   ```solidity
-   GoldLandToken.balanceOf("0xYourAddress");
-   ```
+After deployment, you can interact with your token using Remix or an Ethereum wallet such as MetaMask. The available functions are:
+
+- **mint(address to, uint256 amount)**: Mint tokens to a specified address (owner only).
+- **transfer(address recipient, uint256 amount)**: Transfer tokens to another address.
+- **burn(uint256 amount)**: Burn a specified amount of your own tokens.
+- **balanceOf(address account)**: Check the token balance of a specific address.
+
+## Example Interactions
+
+- **Mint Tokens**:
+  ```solidity
+  BitLandToken.mint("0xRecipientAddress", 1000);
+  ```
+
+- **Transfer Tokens**:
+  ```solidity
+  BitLandToken.transfer("0xRecipientAddress", 1000);
+  ```
+
+- **Burn Tokens**:
+  ```solidity
+  BitLandToken.burn(500);
+  ```
+
+- **Check Balance**:
+  ```solidity
+  BitLandToken.balanceOf("0xYourAddress");
+  ```
